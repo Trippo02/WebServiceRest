@@ -29,15 +29,13 @@ switch($method) {
     break;
 
   case 'DELETE':
-     $id = $_DELETE['id'];
+     $id = $_GET['id'];
     if(isset($id))
     {
-      $student = $student->find($id);
-      if($student!=null)
-      {
+    
         $student->delete($id);
-        $js_encode = json_encode(array('state'=>TRUE, 'student'=>$student),true);
-      }
+        $js_encode = json_encode(array('state'=>TRUE),true);
+      
       header("Content-Type: application/json");
       echo($js_encode);
     }
@@ -60,6 +58,5 @@ switch($method) {
   default:
     break;
 }
-
 
 ?>
